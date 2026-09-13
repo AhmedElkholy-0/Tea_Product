@@ -75,6 +75,24 @@ uv run uvicorn src.tea_product.api:app --reload
 
 The API will be available at `http://localhost:8000`, with interactive docs at `http://localhost:8000/docs`.
 
+## Getting the Trained Model
+
+The trained model file (`runs/detect/train-2/weights/best.onnx`, ~76 MB) is **not included in this repository** to keep it lightweight — large binary files don't belong in git history.
+
+**If you want to try the API without training anything**, the easiest path is to use the pre-built Docker image, which already has the model baked in:
+
+```bash
+docker pull ahmed0alkholy/tea-quality-api
+docker run -p 8000:8000 ahmed0alkholy/tea-quality-api
+```
+
+**If you cloned this repo and want to build the Docker image yourself**, `docker build` will fail at the `COPY runs/detect/train-2/weights/best.onnx` step unless you provide the model file first. You have two options:
+
+1. Train your own model (see [Training a New Model](#training-a-new-model) below), which will generate `runs/detect/train-2/weights/best.onnx`.
+2. Place a `best.onnx` file at that exact path yourself if you already have one.
+
+> A future update may switch this repo to [Git LFS](https://git-lfs.com/) so the model ships with a plain `git clone`. For now, use one of the options above.
+
 ## Running with Docker
 
 ### Option 1 — Pull the pre-built image from Docker Hub
