@@ -9,7 +9,22 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.141.1",
+    "numpy>=2.0.0",
+    "onnx>=1.22.0",
+    "onnxruntime>=1.29.0",
+    "onnxslim>=0.1.96",
+    "opencv-python-headless>=5.0.0.93",
+    "pillow>=11.0.0",
+    "pydantic>=2.13.4",
+    "python-multipart>=0.0.32",
+    "pyyaml>=6.0.3",
     "uvicorn>=0.52.4",
+]
+
+[project.optional-dependencies]
+training = [
+    "roboflow>=1.4.1",
+    "ultralytics>=8.4.127",
 ]
 
 [project.scripts]

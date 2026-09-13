@@ -1,0 +1,17 @@
+model:
+  name: "yolo11n.pt"
+  imgsz: 640
+  epochs: 50
+  seed: 42
+  patience: 30
+
+inference:
+  onnx_path: "runs/detect/train-2/weights/best.onnx"
+  imgsz: 640
+  conf_threshold: 0.6
+  letterbox_color: [114, 114, 114]
+  class_names:
+    0: "Big"
+    1: "bad"
+    2: "red"
+    3: "text"
